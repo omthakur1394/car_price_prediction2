@@ -1,20 +1,26 @@
 # 🚗 Car Price Prediction
 
-This project predicts the selling price of used cars using machine learning. It uses an XGBoost model trained on data like brand, mileage, engine, fuel type, etc., and provides a user interface through a Streamlit app.
+This project predicts the selling price of used cars using machine learning. It uses an XGBoost model trained on features like brand, mileage, engine, fuel type, and more. The model is deployed through a Streamlit web app.
+
+---
+
+## 🌐 Live Demo
+
+🔗 **Try the app here**: [Car Price Predictor Streamlit App](https://carpriceprediction2-amvy7tfthcf68wzwmck5bk.streamlit.app/)
 
 ---
 
 ## 📁 Project Structure
 
-| File       | Description                                                                 |
-|------------|-----------------------------------------------------------------------------|
-| `main.py`  | Trains the model using XGBoost and log-transformed target                  |
-| `main2.py` | Loads the saved model & pipeline, predicts from `input.csv`, outputs to `Output.csv` |
-| `app.py`   | Streamlit app for live predictions from user input                         |
-| `data.csv` | Dataset used for training                                                  |
-| `input.csv`| Sample input data for predictions                                          |
+| File         | Description                                                                 |
+|--------------|-----------------------------------------------------------------------------|
+| `main.py`    | Trains the model using XGBoost with log-transformed target                 |
+| `main2.py`   | Loads saved model and pipeline, predicts from `input.csv`, saves `Output.csv` |
+| `app.py`     | Streamlit app for live predictions                                         |
+| `data.csv`   | Dataset used for model training                                            |
+| `input.csv`  | Sample input data to be predicted in bulk                                  |
 
-⚠️ Files like `model.pkl`, `pipeline.pkl`, and `Output.csv` are generated **after running** the code. They are not stored in the GitHub repo by default.
+> ⚠️ Note: `model.pkl`, `pipeline.pkl`, and `Output.csv` are generated after running the scripts and are not included in the GitHub repo by default.
 
 ---
 
@@ -35,28 +41,29 @@ This project predicts the selling price of used cars using machine learning. It 
 
 ## 💡 How the Project Works
 
-1. **main.py**
-   - Preprocesses data using pipelines
-   - Applies `log1p` transformation on price
-   - Trains an XGBoost model
-   - Saves model and pipeline as `.pkl` files
+### 🔹 `main.py`
+- Loads dataset (`data.csv`)
+- Applies feature engineering and transformation (`np.log1p`)
+- Trains XGBoost Regressor
+- Saves model and preprocessing pipeline (`model.pkl`, `pipeline.pkl`)
 
-2. **main2.py**
-   - Loads saved `.pkl` files
-   - Takes data from `input.csv`
-   - Predicts selling prices
-   - Saves the result to `Output.csv`
+### 🔹 `main2.py`
+- Loads trained pipeline and model
+- Reads input data from `input.csv`
+- Makes predictions and writes results to `Output.csv`
 
-3. **app.py**
-   - Streamlit-based user interface
-   - User fills in car details
-   - Predicts and displays the price
+### 🔹 `app.py`
+- Uses Streamlit to create a user interface
+- Takes user inputs via form
+- Makes live predictions using the trained model
+- Displays predicted price on the screen
 
 ---
 
-## 🚀 How to Run
+## 🚀 How to Run the Project Locally
 
-### 🔹 Step 1: Train the Model
+### ✅ Step 1: Clone the repository
 
 ```bash
-python main.py
+git clone https://github.com/omthakur1394/car_price_prediction2.git
+cd car_price_prediction2
